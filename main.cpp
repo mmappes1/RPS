@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
 
 using std::cout;
 using std::cin;
@@ -24,51 +23,13 @@ int main() {
                  << "2 - Scissors" << endl;
             cin >> playNum;
         } while (playNum > 2 || playNum < 0);
-        compNum = rand() % 3 - 1;
+        compNum = rand() % 3;
         cout << "Player threw ";
         printChoices(playNum);
-        cout << "Comp threw ";
+        cout << "Comp threw " << compNum;
         printChoices(compNum);
-        //checkOutcome(playNum, compNum);
-        if (playNum == 0) {
-            if (compNum == 0) {
-                cout << "Game is tied" << endl;
-            }
-            else if (compNum == 1) {
-                cout << "Computer wins" << endl;
-                compWinCount++;
-            }
-            else {
-                cout << "Player wins" << endl;
-                playWinCount++;
-            }
-        }
-        else if (playNum == 1) {
-            if (compNum == 0) {
-                cout << "Player wins" << endl;
-                playWinCount++;
-            }
-            else if (compNum == 1) {
-                cout << "Game is tied" << endl;
-            }
-            else {
-                cout << "Computer wins" << endl;
-                compWinCount++;
-            }
-        }
-        else {
-            if (compNum == 0) {
-                cout << "Computer wins" << endl;
-                compWinCount++;
-            }
-            else if (compNum == 1) {
-                cout << "Player wins" << endl;
-                playWinCount++;
-            }
-            else {
-                cout << "Game is tied" << endl;
-            }
-        }
+        checkOutcome(playNum, compNum);
+
         cout << endl;
         cout << "Results: " << endl;
         cout << "Total player victories " << playWinCount << endl;
@@ -100,5 +61,43 @@ void printChoices(int n) {
 }
 
 void checkOutcome(int playNum, int compNum) {
-
+    if (playNum == 0) {
+        if (compNum == 0) {
+            cout << "Game is tied" << endl;
+        }
+        else if (compNum == 1) {
+            cout << "Computer wins" << endl;
+            compWinCount++;
+        }
+        else {
+            cout << "Player wins" << endl;
+            playWinCount++;
+        }
+    }
+    else if (playNum == 1) {
+        if (compNum == 0) {
+            cout << "Player wins" << endl;
+            playWinCount++;
+        }
+        else if (compNum == 1) {
+            cout << "Game is tied" << endl;
+        }
+        else {
+            cout << "Computer wins" << endl;
+            compWinCount++;
+        }
+    }
+    else {
+        if (compNum == 0) {
+            cout << "Computer wins" << endl;
+            compWinCount++;
+        }
+        else if (compNum == 1) {
+            cout << "Player wins" << endl;
+            playWinCount++;
+        }
+        else {
+            cout << "Game is tied" << endl;
+        }
+    }
 }
